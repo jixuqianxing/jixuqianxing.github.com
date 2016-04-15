@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Pch文件惹的祸 | jixuqianxing 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="继续前行">
+    
+    
+
+    <meta name="description" content="小引从 Xcode 6 开始，苹果就阉割掉了Precompile Prefix Header（pch文件），阉割并不就意味着不再让你使用了，只是苹果更推荐你不要使用它。如果你非用不可，你可以手动添加来启用它。想必大家都很清楚 pch 文件的作用，但是，在你遇到问题时，你是否会意识到问题是它惹的祸呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pch文件惹的祸 | jixuqianxing">
+<meta property="og:url" content="http://yoursite.com/2014/12/05/Pch文件惹的祸/index.html">
+<meta property="og:site_name" content="jixuqianxing">
+<meta property="og:description" content="小引从 Xcode 6 开始，苹果就阉割掉了Precompile Prefix Header（pch文件），阉割并不就意味着不再让你使用了，只是苹果更推荐你不要使用它。如果你非用不可，你可以手动添加来启用它。想必大家都很清楚 pch 文件的作用，但是，在你遇到问题时，你是否会意识到问题是它惹的祸呢？">
+<meta property="og:image" content="http://img.itc.cn/photo/o3J71x0XTI3">
+<meta property="og:updated_time" content="2016-04-15T01:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pch文件惹的祸 | jixuqianxing">
+<meta name="twitter:description" content="小引从 Xcode 6 开始，苹果就阉割掉了Precompile Prefix Header（pch文件），阉割并不就意味着不再让你使用了，只是苹果更推荐你不要使用它。如果你非用不可，你可以手动添加来启用它。想必大家都很清楚 pch 文件的作用，但是，在你遇到问题时，你是否会意识到问题是它惹的祸呢？">
+<meta name="twitter:image" content="http://img.itc.cn/photo/o3J71x0XTI3">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">jixuqianxing</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/jixuqianxing" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Pch文件惹的祸</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2014-12-05" class="post-meta__date date">2014-12-05</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h2 id="小引"><a href="#小引" class="headerlink" title="小引"></a>小引</h2><p>从 Xcode 6 开始，苹果就阉割掉了Precompile Prefix Header（pch文件），阉割并不就意味着不再让你使用了，只是苹果更推荐你不要使用它。如果你非用不可，你可以手动添加来启用它。想必大家都很清楚 pch 文件的作用，但是，在你遇到问题时，你是否会意识到问题是它惹的祸呢？</p>
+<a id="more"></a>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>此篇文章源起一个报错，如下图所示：</p>
+<p><img src="http://img.itc.cn/photo/o3J71x0XTI3" alt="image"></p>
+<p>这是在我在 <code>Xcode</code> 6.1 中新建项目导入<code>XMPPFramework</code>时报的错。</p>
+<p>其中，有这样一句：</p>
+<blockquote>
+<p>Unknown type name ‘UIImage’</p>
+</blockquote>
+<p>翻译过来也就是找不到UIImage这个类。为什么找不到这个类呢？以前都是相同的操作都没有问题，但是这次为什么有问题了呢？难道是<code>XMPPFramework</code>里面有了变化？在遇到这个问题时，这些疑问都涌上心头。<br>但仔细一想，在 <code>iOS</code> 中 UI 开头的类名都是 <code>UIKit</code> 里面的文件。找不到 <code>UIImage</code> 这个类应该也就是未导入 <code>UIKit</code> 这个库。此时，恍然大悟，这才想起了被阉割的 <code>pch</code>文件。在老的项目中，<code>pch</code>文件都会自动帮我们引入<code>UIKit</code>框架。问题的原因找到后，我在 <code>XMPP.h</code> 文件中添加了<code>#import &lt;UIKit/UIKit.h&gt;</code>，再次编译项目，果然解决了这个报错。</p>
+<hr>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
+<li>文章开头提到了可以手动添加 pch文件，大家可以参考这篇文章：<a href="http://www.cnblogs.com/YouXianMing/p/3989155.html" target="_blank" rel="external">Xcode 6 中添加pch文件</a></li>
+<li>关于苹果为什么阉割掉 pch文件，可以参考 <a href="http://stackoverflow.com/questions/24158648/why-isnt-projectname-prefix-pch-created-automatically-in-xcode-6" target="_blank" rel="external">StackOverflow</a> 上的这个回答。</li>
+</ul>
+<hr>
+<p>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
