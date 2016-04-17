@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      从 Octopress 迁移到 Hexo | jixuqianxing 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="继续前行">
+    
+    
+
+    <meta name="description" content="很久没有更新博客了，一方面是之前搭建的基于Octopress的博客系统不小心被我整坏了；另一方面是时间有限。
+写博客只是记录自己学过的知识、自己的一些想法感悟等等，一方面帮助自己梳理知识点，另一方面本着分享的精神，希望可以帮助到那些需要的人。
+这次我又重新尝试了修复Octopress，但是还是失败了。然后，我尝试找了下其他的博客系统，我发现Hexo搭建起来特别简单。于是，我放弃了Octopress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 Octopress 迁移到 Hexo | jixuqianxing">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/从-Octopress-迁移到-Hexo/index.html">
+<meta property="og:site_name" content="jixuqianxing">
+<meta property="og:description" content="很久没有更新博客了，一方面是之前搭建的基于Octopress的博客系统不小心被我整坏了；另一方面是时间有限。
+写博客只是记录自己学过的知识、自己的一些想法感悟等等，一方面帮助自己梳理知识点，另一方面本着分享的精神，希望可以帮助到那些需要的人。
+这次我又重新尝试了修复Octopress，但是还是失败了。然后，我尝试找了下其他的博客系统，我发现Hexo搭建起来特别简单。于是，我放弃了Octopress">
+<meta property="og:updated_time" content="2016-04-17T04:24:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从 Octopress 迁移到 Hexo | jixuqianxing">
+<meta name="twitter:description" content="很久没有更新博客了，一方面是之前搭建的基于Octopress的博客系统不小心被我整坏了；另一方面是时间有限。
+写博客只是记录自己学过的知识、自己的一些想法感悟等等，一方面帮助自己梳理知识点，另一方面本着分享的精神，希望可以帮助到那些需要的人。
+这次我又重新尝试了修复Octopress，但是还是失败了。然后，我尝试找了下其他的博客系统，我发现Hexo搭建起来特别简单。于是，我放弃了Octopress">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">jixuqianxing</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/jixuqianxing" title="jixuqianxing on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+  
+    <!--
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      -->
+
+      <li class="navigation__item">
+        <a href="http://weibo.com/u/2410259360" title="jixuqianxing on Weibo">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">从 Octopress 迁移到 Hexo</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-04-14" class="post-meta__date date">2016-04-14</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>很久没有更新博客了，一方面是之前搭建的基于<code>Octopress</code>的博客系统不小心被我整坏了；另一方面是时间有限。</p>
+<p>写博客只是记录自己学过的知识、自己的一些想法感悟等等，一方面帮助自己梳理知识点，另一方面本着分享的精神，希望可以帮助到那些需要的人。</p>
+<p>这次我又重新尝试了修复<code>Octopress</code>，但是还是失败了。然后，我尝试找了下其他的博客系统，我发现<code>Hexo</code>搭建起来特别简单。于是，我放弃了<code>Octopress</code>转向了<code>Hexo</code>。</p>
+<p>整个搭建过程如下：</p>
+<h2 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h2><hr>
+<h3 id="1、Git安装"><a href="#1、Git安装" class="headerlink" title="1、Git安装"></a>1、Git安装</h3><p>已安装的跳过。没安装的自行解决吧，很多教程了。</p>
+<h3 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h3><p>下载：<a href="http://nodejs.org/download/" target="_blank" rel="external">点我打开</a></p>
+<p>下载好了，按照步骤一路安装即可。</p>
+<h2 id="二、安装Hexo"><a href="#二、安装Hexo" class="headerlink" title="二、安装Hexo"></a>二、安装Hexo</h2><hr>
+<h3 id="1、安装Hexo"><a href="#1、安装Hexo" class="headerlink" title="1、安装Hexo"></a>1、安装Hexo</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+<h3 id="2、搭建自己的博客"><a href="#2、搭建自己的博客" class="headerlink" title="2、搭建自己的博客"></a>2、搭建自己的博客</h3><p>建议新建一个文件夹，方便日后管理。进入到新建的这个目录，执行以下命令：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>不出意外的话，你将得到以下目录。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line"><span class="params">|---- config.yml      （配置文件）</span><br><span class="line">|</span>---- db.json</span><br><span class="line"><span class="params">|---- node_modules</span><br><span class="line">|</span>---- package.json</span><br><span class="line"><span class="params">|---- public          （生成的静态博客会放在此处）</span><br><span class="line">|</span>---- scaffolds       （博客文章模板）</span><br><span class="line"><span class="params">|---- source          （存放博客文章等）</span><br><span class="line">└---- themes          （博客主题存放）</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="三、开始写博客"><a href="#三、开始写博客" class="headerlink" title="三、开始写博客"></a>三、开始写博客</h2><hr>
+<p>当前目录执行：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"your post name"</span></span><br><span class="line">$ cd source/_post</span><br><span class="line">$ open your post name.md</span><br></pre></td></tr></table></figure></p>
+<p>然后，开始你的写作吧。</p>
+<p>这里补充下，如果你之前没有接触过<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown</a>那么建议你去学习下。推荐一个<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown</a>编辑器<a href="http://25.io/mou/" target="_blank" rel="external">Mou</a>，我一直在使用这个来排版博客，小巧很好用。</p>
+<p>写完博客，可以使用下面命令来本地预览博客。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
+<p>第一句是生成静态博客，第二句开启预览访问端口。浏览器打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ，即可预览。</p>
+<h2 id="四、部署博客"><a href="#四、部署博客" class="headerlink" title="四、部署博客"></a>四、部署博客</h2><hr>
+<p>在<code>Github</code>建立与你用户名对应的仓库，仓库名必须为<code>your_user_name.github.io</code>。或者也可以将博客部署到<code>Gitcafe</code>上面，做法类似。<code>Github</code>的相关操作，请自行查资料，这里不再详细说明。</p>
+<p>创建好仓库，编辑<code>_config.yml</code>。添加下面类容：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span></span><br><span class="line">  <span class="symbol">type:</span> github</span><br><span class="line">  <span class="symbol">repository:</span> <span class="symbol">https:</span>/<span class="regexp">/github.com/your</span>_user_name/your_user_name.github.com.git</span><br><span class="line">  <span class="symbol">branch:</span> master</span><br></pre></td></tr></table></figure></p>
+<p>然后，执行下面指令即可完成部署。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><hr>
+<p>文中只是简单介绍了<code>Hexo</code>博客的搭建与部署，实际还有很多东西需要修改，比如配置文件<code>_config.yml</code>的修改、主题修改、统计、评论等，这些网上资料很多，这里不再展开。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/04/14/从-Octopress-迁移到-Hexo/"></div>
+
+    <script type="text/javascript">
+var duoshuoQuery = {short_name:"jixuqiangxing"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?666255a9040b21ae6e21de0df572e119";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
