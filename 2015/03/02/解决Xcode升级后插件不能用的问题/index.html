@@ -16,7 +16,7 @@
     
     
 
-    <meta name="description" content="打开xcode插件所在的目录；
+    <meta name="description" content="打开Xcode插件所在的目录；
 1~/&amp;#123;当前用户名&amp;#125;/library/Application Support/Developer/Shared/Xcode/Plug-ins
 
 选择已经安装的插件，右键点击显示包内容；
@@ -27,17 +27,17 @@
 <meta property="og:title" content="解决Xcode升级后插件不能用的问题 | jixuqianxing">
 <meta property="og:url" content="http://yoursite.com/2015/03/02/解决Xcode升级后插件不能用的问题/index.html">
 <meta property="og:site_name" content="jixuqianxing">
-<meta property="og:description" content="打开xcode插件所在的目录；
+<meta property="og:description" content="打开Xcode插件所在的目录；
 1~/&amp;#123;当前用户名&amp;#125;/library/Application Support/Developer/Shared/Xcode/Plug-ins
 
 选择已经安装的插件，右键点击显示包内容；
 
 找到Contents文件目录下的info.plist文件，打开找到DVTPlugInCompatibilityUUIDs；在终端执行
 1defaults re">
-<meta property="og:updated_time" content="2016-04-15T08:06:01.000Z">
+<meta property="og:updated_time" content="2016-04-24T13:27:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Xcode升级后插件不能用的问题 | jixuqianxing">
-<meta name="twitter:description" content="打开xcode插件所在的目录；
+<meta name="twitter:description" content="打开Xcode插件所在的目录；
 1~/&amp;#123;当前用户名&amp;#125;/library/Application Support/Developer/Shared/Xcode/Plug-ins
 
 选择已经安装的插件，右键点击显示包内容；
@@ -227,19 +227,19 @@ classes that you can use:
 
   <section id="post-content" class="article-content post">
     <ul>
-<li><p>打开xcode插件所在的目录；</p>
+<li><p>打开<code>Xcode</code>插件所在的目录；</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/&#123;当前用户名&#125;/library</span><span class="regexp">/Application Support/</span>Developer/Shared/Xcode/Plug-ins</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>选择已经安装的插件，右键点击显示包内容；</p>
 </li>
-<li><p>找到Contents文件目录下的info.plist文件，打开找到DVTPlugInCompatibilityUUIDs；<br>在终端执行</p>
+<li><p>找到<code>Contents</code>文件目录下的<code>info.plist</code>文件，打开找到<code>DVTPlugInCompatibilityUUIDs</code>；<br>在终端执行</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>获取到当前Xcode的一个ID，并添加到info.plist文件的DVTPlugInCompatibilityUUIDs中；</p>
+<li><p>获取到当前<code>Xcode</code>的一个<code>ID</code>，并添加到<code>info.plist</code>文件的<code>DVTPlugInCompatibilityUUIDs</code>中；</p>
 </li>
-<li><p>然后双击contents\MacOS目录下的一个黑色图标文件，会在终端打开，会看到“进程已完成”；</p>
+<li><p>然后双击<code>Contents\MacOS</code>目录下的一个黑色图标文件，会在终端打开，会看到“进程已完成”；</p>
 </li>
-<li><p>重启Xcode即可。</p>
+<li><p>重启<code>Xcode</code>即可。</p>
 </li>
 </ul>
 <hr>
