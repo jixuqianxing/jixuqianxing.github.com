@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://img.itc.cn/photo/jtqLqiO0tQA">
 <meta property="og:image" content="http://img.itc.cn/photo/jtqFNmmRuBM">
 <meta property="og:image" content="http://img.itc.cn/photo/jtqLE29dAHx">
-<meta property="og:updated_time" content="2016-04-15T11:24:06.000Z">
+<meta property="og:updated_time" content="2016-04-27T15:05:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoLayout之纯代码布局 | jixuqianxing">
 <meta name="twitter:description" content="我之前写过一篇文章《AutoLayout实用技巧》，那篇文章更适合作为提高来学习，并且只适用于Storyboard和xib。那么对于那些用惯了纯代码的人来说，该怎么使用代码来使用AutoLayout呢？答案是，看我的这篇文章~~ ：）">
@@ -222,29 +222,29 @@ classes that you can use:
 <p><strong>注：</strong>不明白的没关系，后面用到时候会介绍。</p>
 <hr>
 <h4 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (NSArray *)<span class="symbol">constraintsWithVisualFormat:</span>(NSString *)format</span><br><span class="line">                                 <span class="symbol">options:</span>(NSLayoutFormatOptions)opts</span><br><span class="line">                                 <span class="symbol">metrics:</span>(NSDictionary *)metrics</span><br><span class="line">                                   <span class="symbol">views:</span>(NSDictionary *)views;</span><br></pre></td></tr></table></figure>
-<h4 id="API参数介绍"><a href="#API参数介绍" class="headerlink" title="API参数介绍:"></a>API参数介绍:</h4><p><strong>format:</strong> 这个参数就是 VFL 语句，如:V:|-20-[label]；</p>
+<h4 id="API参数介绍"><a href="#API参数介绍" class="headerlink" title="API参数介绍:"></a>API参数介绍:</h4><p><strong>format:</strong> 这个参数就是<code>VFL</code>语句，如:<code>V:|-20-[label]</code>；</p>
 <p><strong>opts:</strong> 枚举参数，默认为0，具体跟据你所实现的需求去选择你想要的枚举；</p>
-<p><strong>metrics:</strong> 一个字典，里面的key对应的是你在format中设置的。比如这句:V:|-20-[label(==heigth)],表示label的高度为heigth,那么这个参数去哪里找呢？就是这个字典里面相应的key对应的值。</p>
-<p><strong>views:</strong> 这是传所有你在 VFL 语句中使用到的View。</p>
+<p><strong>metrics:</strong> 一个字典，里面的key对应的是你在format中设置的。比如这句:<code>V:|-20-[label(==heigth)]</code>,表示label的高度为heigth,那么这个参数去哪里找呢？就是这个字典里面相应的key对应的值。</p>
+<p><strong>views:</strong> 这是传所有你在<code>VFL</code>语句中使用到的<code>View</code>。</p>
 <hr>
 <h4 id="API使用示例："><a href="#API使用示例：" class="headerlink" title="API使用示例："></a>API使用示例：</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">UILabel *label = [[UILabel alloc] init];</span><br><span class="line">label.backgroundColor = [UIColor lightGrayColor];</span><br><span class="line">label.textColor = [UIColor whiteColor];</span><br><span class="line">label.text = @<span class="string">"纯代码自动布局"</span>;</span><br><span class="line"><span class="regexp">/* 要实现自动布局，必须把该属性设置为NO */</span></span><br><span class="line">label.translatesAutoresizingMaskIntoConstraints = NO;</span><br><span class="line"><span class="regexp">/* 添加约束条件前一定要先将控件添加到superView上 */</span></span><br><span class="line">[<span class="keyword">self</span>.view <span class="symbol">addSubview:</span>label];</span><br><span class="line"><span class="regexp">/* 水平方向约束条件 */</span></span><br><span class="line">NSArray *constraints1 = [NSLayoutConstraint <span class="symbol">constraintsWithVisualFormat:</span>@<span class="string">"H:|-margin-[label(==200)]"</span></span><br><span class="line">                                                                <span class="symbol">options:</span><span class="number">0</span></span><br><span class="line">                                                                <span class="symbol">metrics:</span>@&#123;@<span class="string">"margin"</span><span class="symbol">:</span>@60&#125;</span><br><span class="line">                                                                  <span class="symbol">views:</span>NSDictionaryOfVariableBindings(label)];</span><br><span class="line"><span class="regexp">/* 垂直方向约束条件 */</span></span><br><span class="line">NSArray *constraints2 = [NSLayoutConstraint <span class="symbol">constraintsWithVisualFormat:</span>@<span class="string">"V:|-50-[label(==heigth)]"</span></span><br><span class="line">                                                                <span class="symbol">options:</span><span class="number">0</span></span><br><span class="line">                                                                <span class="symbol">metrics:</span>@&#123;@<span class="string">"heigth"</span><span class="symbol">:</span>@40&#125;</span><br><span class="line">                                                                  <span class="symbol">views:</span>NSDictionaryOfVariableBindings(label)];</span><br><span class="line">[<span class="keyword">self</span>.view <span class="symbol">addConstraints:</span>constraints1];</span><br><span class="line">[<span class="keyword">self</span>.view <span class="symbol">addConstraints:</span>constraints2];</span><br></pre></td></tr></table></figure>
-<p><strong>说明：</strong><br>解释一下上面使用的 VFL 语句：</p>
+<p><strong>说明：</strong><br>解释一下上面使用的<code>VFL</code>语句：</p>
 <p><strong>第一句H:|-margin-[label(==200)]</strong></p>
 <p><strong>H:</strong>代表水平方向</p>
-<p><strong>|</strong>代表父视图（superview）</p>
+<p><strong>|</strong>代表父视图（<code>superview</code>）</p>
 <p><strong>-</strong>表示间隔（后面会详细讲解）</p>
-<p><strong>margin</strong>是label与父视图左边的间距，也就是@{@”margin”:@60}这个字典中margin对应的值60</p>
-<p><strong>[label]</strong>表示此约束是针对label的</p>
-<p><strong>(==200)</strong>表示label的宽度为200 pts</p>
+<p><strong>margin</strong>是<code>label</code>与父视图左边的间距，也就是<code>@{@&quot;margin&quot;:@60}</code>这个字典中<code>margin</code>对应的值60</p>
+<p><strong>[label]</strong>表示此约束是针对<code>label</code>的</p>
+<p><strong>(==200)</strong>表示<code>label</code>的宽度为<code>200 pts</code></p>
 <p>整句话的意思就是给label添加 x坐标为60，宽度为200 pts 的约束条件；</p>
 <p><strong>第二句V:|-50-[label(==heigth)]</strong></p>
 <p><strong>V:</strong>表示垂直方向</p>
-<p><strong>|</strong>代表父视图（superview）</p>
+<p><strong>|</strong>代表父视图（<code>superview</code>）</p>
 <p><strong>-</strong>表示间隔</p>
-<p><strong>50</strong>代表label与父视图的顶部的间隔为50</p>
+<p><strong>50</strong>代表<code>label</code>与父视图的顶部的间隔为50</p>
 <p><strong>(==heigth)</strong>表示label的高度为height（@{@”heigth”:@40}字典中对应的40 pts）</p>
 <p>完整的描述为，给label添加y坐标为50，高度为40的约束条件。</p>
-<p>还需要说明的一点是 API 中的 views 是一个字典，这个字典中传入的是你在这个约束条件中用到的所有的 view。如上列中对 label 进行布局，所以这个 views 就是 label。</p>
+<p>还需要说明的一点是<code>API</code>中的<code>views</code>是一个字典，这个字典中传入的是你在这个约束条件中用到的所有的<code>view</code>。如上列中对<code>label</code>进行布局，所以这个<code>views</code>就是<code>label</code>。</p>
 <p>运行结果如下所示：</p>
 <p><img src="http://img.itc.cn/photo/jtqFzG82Am0" alt="image"></p>
 <p><strong>通过上面这个例子你应该掌握至少以下几点：</strong></p>
@@ -255,8 +255,8 @@ classes that you can use:
 </ul>
 <p><strong>卖个关子：</strong>将上面的<code>H:|-margin-[label(==200)]</code>改为<code>H:|-[label(==200)]</code>，<code>V:|-50-[label(==heigth)]</code>改为<code>V:|-[label(==heigth)]</code>再在 <code>iOS 7</code> 和 <code>iOS 8</code> 模拟器上面运行项目看看结果。然后，再去掉第一句的<code>H:</code>看看，你肯定会有所发现。继续阅读本文，你都会找到所有的答案。</p>
 <hr>
-<h2 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h2><p>上面只是简单的介绍了下主要API的基本使用，对于初学者来说，难点应该在于如何书写 VFL 语句。但是，还有一点是更重要的，这一点就是你要能够领悟到，怎样添加约束条件才能将一个 UI 控件布局到你想要的位置。对于这一点，多练习，就会很快掌握的。</p>
-<p>下面，我将利用图（一图胜千言啊）文的形式来为你剖析 AutoLayout 的 VFL 语句的含义，进一步让你熟知这种语法。</p>
+<h2 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h2><p>上面只是简单的介绍了下主要API的基本使用，对于初学者来说，难点应该在于如何书写<code>VFL</code>语句。但是，还有一点是更重要的，这一点就是你要能够领悟到，怎样添加约束条件才能将一个 UI 控件布局到你想要的位置。对于这一点，多练习，就会很快掌握的。</p>
+<p>下面，我将利用图（一图胜千言啊）文的形式来为你剖析<code>AutoLayout</code>的<code>VFL</code>语句的含义，进一步让你熟知这种语法。</p>
 <hr>
 <p><strong>第一句：H:|-[view]-|</strong></p>
 <p>理想中的效果应该是这样的，如下图：</p>

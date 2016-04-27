@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://img.itc.cn/photo/o3J7CmdOBJ4">
 <meta property="og:image" content="http://img.itc.cn/photo/o3J7CiI0c1p">
 <meta property="og:image" content="http://img.itc.cn/photo/o3J7CJbZ4F0">
-<meta property="og:updated_time" content="2016-04-15T11:26:59.000Z">
+<meta property="og:updated_time" content="2016-04-27T15:02:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoLayout实用技巧 | jixuqianxing">
 <meta name="twitter:description" content="前言随着新一代iPhone的推出，苹果也开始大屏化，一下推出了两款大屏iPhone，并且这两款iPhone尺寸也不一样，一个是4.7寸，另一款则是5.5寸，加上之前的3.5寸和4寸，现在已经有四种不同的尺寸了。作为一名iOS开发者，你是不是感到很捉急呢？会不会感觉iPhone也要像安卓那样做着各种机型的适配呢？答案是肯定的，不过你会发现选择iOS开发是多么明智的选择。因为，苹果已经为我们准备了屏幕">
@@ -214,9 +214,9 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着新一代iPhone的推出，苹果也开始大屏化，一下推出了两款大屏iPhone，并且这两款iPhone尺寸也不一样，一个是4.7寸，另一款则是5.5寸，加上之前的3.5寸和4寸，现在已经有四种不同的尺寸了。作为一名iOS开发者，你是不是感到很捉急呢？会不会感觉iPhone也要像安卓那样做着各种机型的适配呢？答案是肯定的，不过你会发现选择iOS开发是多么明智的选择。因为，苹果已经为我们准备了屏幕适配做好的工具AutoLayout以及iOS8新推出的SizeClass，熟练掌握这两项技术后，你会发现适配也是如此简单。<br>好了，前面都是废话，之所以写这篇文章，是因为身边还有很多朋友在为屏幕适配而烦恼。接下来我不会介绍什么是AutoLayout，如果你还不熟悉AutoLayout那么建议你先查查资料了解一下。另外，如果你对本文或者对本文使用的方法存在疑问，欢迎在文章下面留言。</p>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着新一代<code>iPhone</code>的推出，苹果也开始大屏化，一下推出了两款大屏iPhone，并且这两款<code>iPhone</code>尺寸也不一样，一个是4.7寸，另一款则是5.5寸，加上之前的3.5寸和4寸，现在已经有四种不同的尺寸了。作为一名<code>iOS</code>开发者，你是不是感到很捉急呢？会不会感觉<code>iPhone</code>也要像安卓那样做着各种机型的适配呢？答案是肯定的，不过你会发现选择<code>iOS</code>开发是多么明智的选择。因为，苹果已经为我们准备了屏幕适配做好的工具<code>AutoLayout</code>以及iOS8新推出的<code>SizeClass</code>，熟练掌握这两项技术后，你会发现适配也是如此简单。<br>好了，前面都是废话，之所以写这篇文章，是因为身边还有很多朋友在为屏幕适配而烦恼。接下来我不会介绍什么是<code>AutoLayout</code>，如果你还不熟悉<code>AutoLayout</code>那么建议你先查查资料了解一下。另外，如果你对本文或者对本文使用的方法存在疑问，欢迎在文章下面留言。</p>
 <a id="more"></a>
-<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><p>下面，主要通过一个实例来演示如何快速的在Storyboard或Xib中使用AutoLayout。<br>例：如图，给白色方块添加约束条件，使其据父控件的顶部的距离一定，长宽不变，并且垂直居中。<br><img src="http://img.itc.cn/photo/j3J7CRISwoG" alt="image"></p>
+<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><p>下面，主要通过一个实例来演示如何快速的在<code>Storyboard</code>或<code>Xib</code>中使用<code>AutoLayout</code>。<br>例：如图，给白色方块添加约束条件，使其据父控件的顶部的距离一定，长宽不变，并且垂直居中。<br><img src="http://img.itc.cn/photo/j3J7CRISwoG" alt="image"></p>
 <p>操作方法有很多，我主要介绍三种快速操作。</p>
 <hr>
 <p><strong>方法一如下：</strong></p>
@@ -224,7 +224,7 @@ classes that you can use:
 <p>这种方法很简单，相信很多人都会。</p>
 <p><strong>第二种方法：</strong></p>
 <p><img src="http://img.itc.cn/photo/o3J7CmdOBJ4" alt="image"></p>
-<p>注意:操作方法为：按住control键，然后进行拖拽。<br>如果，你已经熟知此类拖拽方法，那么你大可不必继续阅读此文了。如果，你是第一次接触这种方法，应该会感到很神奇，就这么简单的拖拖拽拽就可以完成适配了。对！就是这么简单，从此告别屏幕适配的烦恼。</p>
+<p>注意:操作方法为：按住<code>control</code>键，然后进行拖拽。<br>如果，你已经熟知此类拖拽方法，那么你大可不必继续阅读此文了。如果，你是第一次接触这种方法，应该会感到很神奇，就这么简单的拖拖拽拽就可以完成适配了。对！就是这么简单，从此告别屏幕适配的烦恼。</p>
 <p>在此操作下你需要注意以下两点：</p>
 <ul>
 <li>拖拽的方向（上、下、左、右）</li>
@@ -236,7 +236,7 @@ classes that you can use:
 <p>最终效果如下：</p>
 <p><img src="http://img.itc.cn/photo/o3J7CJbZ4F0" alt="image"></p>
 <hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>上面只是个简单的例子，只要掌握了AutoLayout的基本使用方法，再结合本文中的方法，你将会感受到适配也是如此轻松地一件事。<br>如果大家有什么疑问，欢迎提出。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>上面只是个简单的例子，只要掌握了<code>AutoLayout</code>的基本使用方法，再结合本文中的方法，你将会感受到适配也是如此轻松地一件事。<br>如果大家有什么疑问，欢迎提出。</p>
 <hr>
 <h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
 <li><a href="http://jixuqianxing.github.io/2014/12/11/AutoLayout之纯代码布局/" target="_blank" rel="external">AutoLayout之纯代码布局</a></li>
