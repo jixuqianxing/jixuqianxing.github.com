@@ -7,7 +7,7 @@
     
 
     <title>
-      所有文章 
+      Archives 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -18,12 +18,12 @@
 
     <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="所有文章">
+<meta property="og:title" content="Archives">
 <meta property="og:url" content="http://yoursite.com/archives/index.html">
 <meta property="og:site_name" content="jixuqianxing">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="所有文章">
+<meta name="twitter:title" content="Archives">
 <meta name="twitter:description">
     
     
@@ -193,6 +193,26 @@ classes that you can use:
     <li>
 
       <h2 class="post-list__post-title post-title">
+        <a href="/2016/04/29/XcodePlug-ins/" title="link to 备份自己使用到的一些Xcode插件">备份自己使用到的一些Xcode插件</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2016-04-29" class="post-list__meta--date date">2016-04-29</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>在这里记录下自己用到的一些好的<code>Xcode</code>插件，方便以后换电脑或者重装。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
         <a href="/2016/04/17/20160417/" title="link to 生命在于运动">生命在于运动</a>
       </h2>
 
@@ -240,6 +260,12 @@ classes that you can use:
       </div>
 
       <div class="excerpt">
+        
+          <p><strong>更新类容：</strong></p>
+<p>使用下面这句命令，就不再需要手动处理了：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~<span class="regexp">/Library/</span>Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth <span class="number">3</span> <span class="params">| xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults read /Applications/Xcode.app/Contents/Info.plist DVTPlugInCompatibilityUUID`</span></span><br></pre></td></tr></table></figure>
+<p>但是，在实际操作时，使用上面的方法也有不起作用的时候。这个时候，我使用了个比较笨的方法，就是直接删除<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/&#123;当前用户名&#125;/library</span><span class="regexp">/Application Support/</span>Developer/Shared/Xcode/Plug-ins</span><br></pre></td></tr></table></figure></p>
+<p>目录下的所有插件，重新装一下插件即可。此方法比较笨拙，如果大家有好的解决方法，欢迎在下面评论。</p>
         
       </div>
 
@@ -374,26 +400,6 @@ classes that you can use:
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2014/12/16/AutoLayout之可视化布局/" title="link to AutoLayout之可视化布局">AutoLayout之可视化布局</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2014-12-16" class="post-list__meta--date date">2014-12-16</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>写过两篇关于自动布局的文章<a href="http://jixuqianxing.github.io/2014/11/28/AutoLayout实用技巧/">《AutoLayout实用技巧》</a>和<a href="http://jixuqianxing.github.io/2014/12/11/AutoLayout之纯代码布局/">《AutoLayout之纯代码布局》</a>。虽然，<a href="http://jixuqianxing.github.io/2014/11/28/AutoLayout实用技巧/">《AutoLayout实用技巧》</a>主要是针对<code>Storyboard</code>和<code>XIB</code>写的，但是里面仅仅只是展示了下操作技巧，也是针对有基础的人来学的，并未对如何在<code>Storyboard</code>和<code>XIB</code>中使用<code>AutoLayout</code>做过介绍。所以，打算再写篇文章来介绍一下。</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
@@ -404,7 +410,7 @@ classes that you can use:
     <span class="pagination__page-number"> 1 / 2</span>
     
     
-        <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/2/">下一頁 &rarr;</a>
+        <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/2/">Next &rarr;</a>
     
 </nav>
 

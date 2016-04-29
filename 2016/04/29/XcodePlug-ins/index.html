@@ -7,7 +7,7 @@
     
 
     <title>
-      解决Xcode升级后插件不能用的问题 | jixuqianxing 
+      备份自己使用到的一些Xcode插件 | jixuqianxing 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,22 +16,22 @@
     
     
 
-    <meta name="description" content="更新类容：
-使用下面这句命令，就不再需要手动处理了：
-1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUU">
+    <meta name="description" content="在这里记录下自己用到的一些好的Xcode插件，方便以后换电脑或者重装。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Xcode升级后插件不能用的问题 | jixuqianxing">
-<meta property="og:url" content="http://yoursite.com/2015/03/02/解决Xcode升级后插件不能用的问题/index.html">
+<meta property="og:title" content="备份自己使用到的一些Xcode插件 | jixuqianxing">
+<meta property="og:url" content="http://yoursite.com/2016/04/29/XcodePlug-ins/index.html">
 <meta property="og:site_name" content="jixuqianxing">
-<meta property="og:description" content="更新类容：
-使用下面这句命令，就不再需要手动处理了：
-1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUU">
-<meta property="og:updated_time" content="2016-04-29T05:01:11.000Z">
+<meta property="og:description" content="在这里记录下自己用到的一些好的Xcode插件，方便以后换电脑或者重装。">
+<meta property="og:image" content="https://camo.githubusercontent.com/ca5518c9872e15b8a95b9d8c5f44bc331977d710/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f53637265656e53686f742e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/58e452b57245cd79c2e59ac7926609be4dffbfd8/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f7676646f63756d656e7465722d73776966742e676966">
+<meta property="og:image" content="https://github.com/rickytan/RTImageAssets/blob/master/ScreenCap/usage.gif?raw=true">
+<meta property="og:image" content="https://camo.githubusercontent.com/c354bf04524df86daeabe7a6d2b9926fac790f85/68747470733a2f2f7261772e6769746875622e636f6d2f6b7375746865722f4b53496d6167654e616d65642d58636f64652f6d61737465722f73637265656e73686f742e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/7973c0e352b1f91e3efe5b3550cff5df97f4589a/687474703a2f2f7166692e73682f58416c69676e2f696d616765732f657175616c2e676966">
+<meta property="og:updated_time" content="2016-04-29T05:14:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决Xcode升级后插件不能用的问题 | jixuqianxing">
-<meta name="twitter:description" content="更新类容：
-使用下面这句命令，就不再需要手动处理了：
-1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUU">
+<meta name="twitter:title" content="备份自己使用到的一些Xcode插件 | jixuqianxing">
+<meta name="twitter:description" content="在这里记录下自己用到的一些好的Xcode插件，方便以后换电脑或者重装。">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/ca5518c9872e15b8a95b9d8c5f44bc331977d710/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f53637265656e53686f742e676966">
     
     
     
@@ -193,12 +193,12 @@ classes that you can use:
 
   <header class="post-header">
     
-    <h1 class="post-title">解决Xcode升级后插件不能用的问题</h1>
+    <h1 class="post-title">备份自己使用到的一些Xcode插件</h1>
 
     
 
     <div class="post-meta">
-      <time datetime="2015-03-02" class="post-meta__date date">2015-03-02</time> 
+      <time datetime="2016-04-29" class="post-meta__date date">2016-04-29</time> 
 
       <span class="post-meta__tags tags">
 
@@ -214,30 +214,16 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    <p><strong>更新类容：</strong></p>
-<p>使用下面这句命令，就不再需要手动处理了：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~<span class="regexp">/Library/</span>Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth <span class="number">3</span> <span class="params">| xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults read /Applications/Xcode.app/Contents/Info.plist DVTPlugInCompatibilityUUID`</span></span><br></pre></td></tr></table></figure>
-<p>但是，在实际操作时，使用上面的方法也有不起作用的时候。这个时候，我使用了个比较笨的方法，就是直接删除<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/&#123;当前用户名&#125;/library</span><span class="regexp">/Application Support/</span>Developer/Shared/Xcode/Plug-ins</span><br></pre></td></tr></table></figure></p>
-<p>目录下的所有插件，重新装一下插件即可。此方法比较笨拙，如果大家有好的解决方法，欢迎在下面评论。</p>
+    <p>在这里记录下自己用到的一些好的<code>Xcode</code>插件，方便以后换电脑或者重装。</p>
 <a id="more"></a>
-<p>以上是更新内容。</p>
-<hr>
-<ul>
-<li><p>打开<code>Xcode</code>插件所在的目录；</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/&#123;当前用户名&#125;/library</span><span class="regexp">/Application Support/</span>Developer/Shared/Xcode/Plug-ins</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择已经安装的插件，右键点击显示包内容；</p>
-</li>
-<li><p>找到<code>Contents</code>文件目录下的<code>info.plist</code>文件，打开找到<code>DVTPlugInCompatibilityUUIDs</code>；<br>在终端执行</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取到当前<code>Xcode</code>的一个<code>ID</code>，并添加到<code>info.plist</code>文件的<code>DVTPlugInCompatibilityUUIDs</code>中；</p>
-</li>
-<li><p>然后双击<code>Contents\MacOS</code>目录下的一个黑色图标文件，会在终端打开，会看到“进程已完成”；</p>
-</li>
-<li><p>重启<code>Xcode</code>即可。</p>
-</li>
-</ul>
+<p>1.<a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external"><strong>VVDocumenter-Xcode</strong></a></p>
+<p><img src="https://camo.githubusercontent.com/ca5518c9872e15b8a95b9d8c5f44bc331977d710/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f53637265656e53686f742e676966" alt="image"><br><img src="https://camo.githubusercontent.com/58e452b57245cd79c2e59ac7926609be4dffbfd8/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f7676646f63756d656e7465722d73776966742e676966" alt="image"></p>
+<p>2.<a href="https://github.com/rickytan/RTImageAssets" target="_blank" rel="external"><strong>RTImageAssets</strong></a></p>
+<p><img src="https://github.com/rickytan/RTImageAssets/blob/master/ScreenCap/usage.gif?raw=true" alt="image"></p>
+<p>3.<a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external"><strong>KSImageNamed-Xcode</strong></a></p>
+<p><img src="https://camo.githubusercontent.com/c354bf04524df86daeabe7a6d2b9926fac790f85/68747470733a2f2f7261772e6769746875622e636f6d2f6b7375746865722f4b53496d6167654e616d65642d58636f64652f6d61737465722f73637265656e73686f742e676966" alt="image"></p>
+<p><br><br></p>
+<p>4.<a href="https://github.com/qfish/XAlign" target="_blank" rel="external"><strong>XAlign</strong></a><br><img src="https://camo.githubusercontent.com/7973c0e352b1f91e3efe5b3550cff5df97f4589a/687474703a2f2f7166692e73682f58416c69676e2f696d616765732f657175616c2e676966" alt="image"></p>
 <hr>
 <p>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
 
@@ -248,7 +234,7 @@ classes that you can use:
 
 <section class="post-comments">
 
-    <div class="ds-thread" data-thread-key="2015/03/02/解决Xcode升级后插件不能用的问题/"></div>
+    <div class="ds-thread" data-thread-key="2016/04/29/XcodePlug-ins/"></div>
 
     <script type="text/javascript">
 var duoshuoQuery = {short_name:"jixuqiangxing"};
