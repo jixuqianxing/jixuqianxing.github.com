@@ -207,8 +207,7 @@ classes that you can use:
           <p><strong>更新类容：</strong></p>
 <p>使用下面这句命令，就不再需要手动处理了：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~<span class="regexp">/Library/</span>Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth <span class="number">3</span> <span class="params">| xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults read /Applications/Xcode.app/Contents/Info.plist DVTPlugInCompatibilityUUID`</span></span><br></pre></td></tr></table></figure>
-<p>但是，在实际操作时，使用上面的方法也有不起作用的时候。这个时候，我使用了个比较笨的方法，就是直接删除<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/&#123;当前用户名&#125;/library</span><span class="regexp">/Application Support/</span>Developer/Shared/Xcode/Plug-ins</span><br></pre></td></tr></table></figure></p>
-<p>目录下的所有插件，重新装一下插件即可。此方法比较笨拙，如果大家有好的解决方法，欢迎在下面评论。</p>
+<p>但是，在实际操作时，使用上面的方法也有不起作用的时候。这个时候，我使用了个比较笨的方法，就是直接删除<br><code>~/{当前用户名}/library/Application Support/Developer/Shared/Xcode/Plug-ins</code><br>目录下的所有插件，重新装一下插件即可。此方法比较笨拙，如果大家有好的解决方法，欢迎在下面评论。</p>
         
       </div>
 
