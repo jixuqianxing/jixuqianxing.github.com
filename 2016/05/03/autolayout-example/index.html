@@ -16,27 +16,22 @@
     
     
 
-    <meta name="description" content="小引前段时间面试，遇到这样一个布局问题。这个问题如果通过手写代码，或者Storyboard、XIB加代码，都是很简单就可以实现的。但是，这个问题怎么会问的这么简单呢？前提是，不能写代码。
-下面说说我想到的一些不需要写代码的布局方案，如果大家有更好的解决方案，欢迎评论讨论。">
+    <meta name="description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三个固定宽高的视图如何添加约束做到平分屏幕？ | jixuqianxing">
 <meta property="og:url" content="http://yoursite.com/2016/05/03/autolayout-example/index.html">
 <meta property="og:site_name" content="jixuqianxing">
-<meta property="og:description" content="小引前段时间面试，遇到这样一个布局问题。这个问题如果通过手写代码，或者Storyboard、XIB加代码，都是很简单就可以实现的。但是，这个问题怎么会问的这么简单呢？前提是，不能写代码。
-下面说说我想到的一些不需要写代码的布局方案，如果大家有更好的解决方案，欢迎评论讨论。">
-<meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/03.png">
+<meta property="og:description">
+<meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/02.png">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/2.gif">
-<meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/05.png">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/3.gif">
-<meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/01.png">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/1.gif">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/multiplier.png">
-<meta property="og:updated_time" content="2016-05-09T14:19:55.000Z">
+<meta property="og:updated_time" content="2016-05-09T14:25:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三个固定宽高的视图如何添加约束做到平分屏幕？ | jixuqianxing">
-<meta name="twitter:description" content="小引前段时间面试，遇到这样一个布局问题。这个问题如果通过手写代码，或者Storyboard、XIB加代码，都是很简单就可以实现的。但是，这个问题怎么会问的这么简单呢？前提是，不能写代码。
-下面说说我想到的一些不需要写代码的布局方案，如果大家有更好的解决方案，欢迎评论讨论。">
-<meta name="twitter:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/03.png">
+<meta name="twitter:description">
+<meta name="twitter:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/02.png">
     
     
     
@@ -219,34 +214,33 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    <h1 id="小引"><a href="#小引" class="headerlink" title="小引"></a>小引</h1><p>前段时间面试，遇到这样一个布局问题。这个问题如果通过手写代码，或者<code>Storyboard</code>、<code>XIB</code>加代码，都是很简单就可以实现的。但是，这个问题怎么会问的这么简单呢？前提是，不能写代码。</p>
-<p>下面说说我想到的一些不需要写代码的布局方案，如果大家有更好的解决方案，欢迎评论讨论。</p>
+    <p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/02.png" alt="image"></p>
 <a id="more"></a>
+<h2 id="小引"><a href="#小引" class="headerlink" title="小引"></a>小引</h2><p>前段时间面试，遇到这样一个布局问题。这个问题如果通过手写代码，或者<code>Storyboard</code>、<code>XIB</code>加代码，都是很简单就可以实现的。但是，这个问题怎么会问的这么简单呢？前提是，不能写代码。</p>
+<p>下面说说我想到的一些不需要写代码的布局方案，如果大家有更好的解决方案，欢迎评论讨论。</p>
 <hr>
-<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>三个等宽等高的<code>View</code>不管屏幕旋转，还是屏幕尺寸变化，这三个<code>View</code>都要做到平分屏幕。简单画个草图就可以得到以下信息：</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>三个等宽等高的<code>View</code>不管屏幕旋转，还是屏幕尺寸变化，这三个<code>View</code>都要做到平分屏幕。简单画个草图就可以得到以下信息：</p>
 <ul>
 <li>三个<code>View</code>两两间隙以及边缘<code>View</code>与屏幕边缘的间隙都是相同的；</li>
 <li>这三个<code>View</code>的中心点在屏幕的三等分点上。</li>
 </ul>
 <p>有了这两个思路，问题就好解决了。</p>
 <hr>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p>通过添加辅助布局<code>View</code>来实现：通过添加四个辅助<code>View</code>（下图中灰色的View）来完成布局。</p>
-<p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/03.png" alt="image"></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p>通过添加辅助布局<code>View</code>来实现：通过添加四个辅助<code>View</code>（下图中灰色的View）来完成布局。</p>
 <p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/2.gif" alt="image"><br>具体怎么实现，大家自行脑补吧。大致说下思路，四个辅助<code>View</code>等宽且宽度随屏幕宽度变化，另外三个<code>View</code>宽高固定，并添加好<code>View</code>之间的约束以及<code>View</code>与父视图间的约束即可。</p>
 <hr>
-<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>此方案是针对于方案一的优化升级版：只需要添加两个辅助<code>View</code>即可实现需求。</p>
-<p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/05.png" alt="image"></p>
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><p>此方案是针对于方案一的优化升级版：只需要添加两个辅助<code>View</code>即可实现需求。</p>
 <p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/3.gif" alt="image"></p>
 <p><strong>思路：</strong>首先固定中间的<code>View</code>居中，然后添加的两个辅助<code>View</code>分别相对于中间居中的<code>View</code>和父视图添加约束，宽度伸缩，高度固定。这样，这两个辅助<code>View</code>的宽度在任何情况下都相等，然后在这两个辅助<code>View</code>里面分别添加上另外的<code>View</code>，这个<code>View</code>相对于辅助<code>View</code>居中即可。</p>
 <hr>
-<h2 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h2><p>此方法为进阶方案，当然你如果知道这个方法，也很简单。说它是进阶，是相对于前面两种方案来说的。因为，这种方案不需要添加辅助<code>View</code>。</p>
-<p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/01.png" alt="image"><br><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/1.gif" alt="image"></p>
+<h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><p>此方法为进阶方案，当然你如果知道这个方法，也很简单。说它是进阶，是相对于前面两种方案来说的。因为，这种方案不需要添加辅助<code>View</code>。</p>
+<p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/1.gif" alt="image"></p>
 <p>这个方法主要用到<code>AutoLayout</code>的一个<code>API</code>：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+(instancetype)<span class="symbol">constraintWithItem:</span>(id)view1</span><br><span class="line">                        <span class="symbol">attribute:</span>(NSLayoutAttribute)attr1</span><br><span class="line">                        <span class="symbol">relatedBy:</span>(NSLayoutRelation)relation</span><br><span class="line">                           <span class="symbol">toItem:</span>(id)view2</span><br><span class="line">                        <span class="symbol">attribute:</span>(NSLayoutAttribute)attr2</span><br><span class="line">                       <span class="symbol">multiplier:</span>(CGFloat)multiplier</span><br><span class="line">                         <span class="symbol">constant:</span>(CGFloat)c;</span><br></pre></td></tr></table></figure>
 <p>这个<code>API</code>的参数必须满足条件：<code>view1.attr1 = view2.attr2 * multiplier + constant</code>，这个条件中的<code>multiplier</code>是此方案的关键点。</p>
 <p>通过上面的问题分析，我们可以设定三个<code>view</code>的中心点来达到效果。所以，我们可以设置左边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>0.5</code>倍，右边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>1.5</code>倍，这个倍数就是<code>multiplier</code>的值。</p>
 <p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/multiplier.png" alt="image"></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>以上就是三种简单的解决方案，如果你还有其他的解决方案，欢迎评论。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上就是三种简单的解决方案，如果你还有其他的解决方案，欢迎评论。</p>
 <hr>
 <p>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
 
