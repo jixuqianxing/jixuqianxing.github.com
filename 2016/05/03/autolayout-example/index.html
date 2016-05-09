@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/3.gif">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/1.gif">
 <meta property="og:image" content="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/multiplier.png">
-<meta property="og:updated_time" content="2016-05-09T14:25:56.000Z">
+<meta property="og:updated_time" content="2016-05-09T14:57:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三个固定宽高的视图如何添加约束做到平分屏幕？ | jixuqianxing">
 <meta name="twitter:description">
@@ -238,7 +238,7 @@ classes that you can use:
 <p>这个方法主要用到<code>AutoLayout</code>的一个<code>API</code>：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+(instancetype)<span class="symbol">constraintWithItem:</span>(id)view1</span><br><span class="line">                        <span class="symbol">attribute:</span>(NSLayoutAttribute)attr1</span><br><span class="line">                        <span class="symbol">relatedBy:</span>(NSLayoutRelation)relation</span><br><span class="line">                           <span class="symbol">toItem:</span>(id)view2</span><br><span class="line">                        <span class="symbol">attribute:</span>(NSLayoutAttribute)attr2</span><br><span class="line">                       <span class="symbol">multiplier:</span>(CGFloat)multiplier</span><br><span class="line">                         <span class="symbol">constant:</span>(CGFloat)c;</span><br></pre></td></tr></table></figure>
 <p>这个<code>API</code>的参数必须满足条件：<code>view1.attr1 = view2.attr2 * multiplier + constant</code>，这个条件中的<code>multiplier</code>是此方案的关键点。</p>
-<p>通过上面的问题分析，我们可以设定三个<code>view</code>的中心点来达到效果。所以，我们可以设置左边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>0.5</code>倍，右边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>1.5</code>倍，这个倍数就是<code>multiplier</code>的值。</p>
+<p>通过上面的问题分析，我们可以设定三个<code>view</code>的中心点来达到效果。首先，设置中间的<code>view</code>居中。然后，设置左边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>0.5</code>倍，右边<code>view</code>的中心点的<code>x</code>值为屏幕中心点<code>x</code>值的<code>1.5</code>倍，这个倍数就是<code>multiplier</code>的值。</p>
 <p><img src="https://coding.net/u/jixuqianxing/p/ShareImages/git/raw/master/Images/multiplier.png" alt="image"></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上就是三种简单的解决方案，如果你还有其他的解决方案，欢迎评论。</p>
 <hr>
