@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      如何试用Teamtalk iOS端源码 | jixuqianxing 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="继续前行">
+    
+    
+
+    <meta name="description" content="什么是Teamtalk？首先，我想向Teamtalk开源团队致敬，感谢你们的开源精神！致敬！
+什么是Teamtalk？Teamtalk是蘑菇街开源的一套即时通讯系统。通俗的说，就是可以拿它来做即时通讯，而且跨平台做的比较好。
+为什么写这篇文章？因为，在使用过程中遇到很多麻烦。踩着坑过来，现在我是来填坑的。希望帮助到一些人，能让大家按照修改，快速用起来。不过还是希望官方能够处理掉啊，毕竟也算是大公司">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何试用Teamtalk iOS端源码 | jixuqianxing">
+<meta property="og:url" content="http://yoursite.com/2016/05/18/Teamtalk1/index.html">
+<meta property="og:site_name" content="jixuqianxing">
+<meta property="og:description" content="什么是Teamtalk？首先，我想向Teamtalk开源团队致敬，感谢你们的开源精神！致敬！
+什么是Teamtalk？Teamtalk是蘑菇街开源的一套即时通讯系统。通俗的说，就是可以拿它来做即时通讯，而且跨平台做的比较好。
+为什么写这篇文章？因为，在使用过程中遇到很多麻烦。踩着坑过来，现在我是来填坑的。希望帮助到一些人，能让大家按照修改，快速用起来。不过还是希望官方能够处理掉啊，毕竟也算是大公司">
+<meta property="og:updated_time" content="2016-05-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何试用Teamtalk iOS端源码 | jixuqianxing">
+<meta name="twitter:description" content="什么是Teamtalk？首先，我想向Teamtalk开源团队致敬，感谢你们的开源精神！致敬！
+什么是Teamtalk？Teamtalk是蘑菇街开源的一套即时通讯系统。通俗的说，就是可以拿它来做即时通讯，而且跨平台做的比较好。
+为什么写这篇文章？因为，在使用过程中遇到很多麻烦。踩着坑过来，现在我是来填坑的。希望帮助到一些人，能让大家按照修改，快速用起来。不过还是希望官方能够处理掉啊，毕竟也算是大公司">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">jixuqianxing</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/jixuqianxing" title="jixuqianxing on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+  
+    <!--
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      -->
+
+      <li class="navigation__item">
+        <a href="http://weibo.com/u/2410259360" title="jixuqianxing on Weibo">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">如何试用Teamtalk iOS端源码</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-05-18" class="post-meta__date date">2016-05-18</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h2 id="什么是Teamtalk？"><a href="#什么是Teamtalk？" class="headerlink" title="什么是Teamtalk？"></a>什么是Teamtalk？</h2><p>首先，我想向<a href="http://tt.mogu.io" target="_blank" rel="external">Teamtalk</a>开源团队致敬，感谢你们的开源精神！致敬！</p>
+<p>什么是<a href="http://tt.mogu.io" target="_blank" rel="external">Teamtalk</a>？<a href="http://tt.mogu.io" target="_blank" rel="external">Teamtalk</a>是蘑菇街开源的一套即时通讯系统。通俗的说，就是可以拿它来做即时通讯，而且跨平台做的比较好。</p>
+<h2 id="为什么写这篇文章？"><a href="#为什么写这篇文章？" class="headerlink" title="为什么写这篇文章？"></a>为什么写这篇文章？</h2><p>因为，在使用过程中遇到很多麻烦。踩着坑过来，现在我是来填坑的。希望帮助到一些人，能让大家按照修改，快速用起来。不过还是希望官方能够处理掉啊，毕竟也算是大公司了。</p>
+<h2 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h2><p>首先，下载<code>Teamtalk</code>开源代码。</p>
+<p><a href="https://github.com/mogujie/TeamTalk" target="_blank" rel="external">Github下载地址</a></p>
+<p>iOS端代码在<code>TeamTalk-master/ios</code>目录下。进入这个目录，先执行下</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod update</span><br></pre></td></tr></table></figure>
+<p>没安装<code>CocoaPods</code>的同学需要先装下。</p>
+<p>然后，打开项目。注意，此时项目是跑不起来的。</p>
+<p>首先，需要注释掉<code>AppDelegate.m</code>里面的以下引用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/#import &lt;Fabric/</span>Fabric.h&gt;</span><br><span class="line"><span class="regexp">//</span><span class="comment">#import &lt;Crashlytics/Crashlytics.h&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以及以下代码</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ [Fabric with:@[CrashlyticsKit]];</span></span><br></pre></td></tr></table></figure>
+<p>因为，我们不需要这些。不得不吐槽下<code>iOS</code>代码，需要各种改才能跑起来。</p>
+<p>仅仅做了上面的工作，你会发现项目还是运行不起来的。报错信息：</p>
+<blockquote>
+<p>ld: warning: directory not found for option ‘-L/Users/zcx/Downloads/TeamTalk-master/ios/TeamTalk/Exist/MobClick’<br>ld: framework not found Fabric<br>clang: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+</blockquote>
+<p>信息显示是跟<code>Fabric</code>这个库有关。</p>
+<p>在<code>Linked Frameworks and Libraries</code>下面找到<code>Fabric.framework</code>和<code>Crashlytics.framework</code>，将这个两个framework删掉。</p>
+<p>然后，继续报错。</p>
+<blockquote>
+<p>…/Library/Developer/Xcode/DerivedData/TeamTalk-clkdsersjrkmjkgcqvhwkdgktpoc/Build/Intermediates/TeamTalk.build/Debug-iphonesimulator/TeamTalk.build/Script-817CB3AD1B3BC68D0004AFEA.sh: line 2: ./Fabric.framework/run: No such file or directory</p>
+</blockquote>
+<p>此错误信息还是跟<code>Fabric</code>有关，不过这时候可以看到一个单词<code>Script</code>。于是去<code>Build Phases</code>下找了下，发现<code>Run Script</code>有以下脚本：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Fabric.framework/run c85ad901eb0173a488b631e90f5913415f7424d1 bcd847cf6b15b2605cfff9400a4da335ce5ea3a0ac481dd143db404b55a09e73</span><br></pre></td></tr></table></figure>
+<p>将其删除。</p>
+<p>另外，<code>Info.plist</code>文件里面包含一个<code>Fabric</code>字典，这个也可以删除掉，不过删不删没啥影响。</p>
+<p>到此，项目就可以正常的运行起来了，运行起来的坑算是解决了。不过，要想用好这些东西，后面的坑还多着呢。</p>
+<p>如果你搭建好了<code>Teamtalk</code>服务器。</p>
+<p>回到<code>iOS</code>端代码，注释掉以下代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//    userName = @"铸剑";</span><br><span class="line">//    password = @"123456";</span><br></pre></td></tr></table></figure>
+<p>偷懒也不带这样的吧，可以给输入框赋默认值啊。提交代码更不该这么做吧，很多人会看你写的东西呢。</p>
+<p>然后，修改</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define SERVER_ADDR @"http://61.153.100.221:8080/msg_server"</span></span><br></pre></td></tr></table></figure>
+<p>这个宏，换成你自己配的。</p>
+<p>再然后，进到<code>LoginAPI.m</code>这个文件，将<code>if (loginResult != 0)</code>改成<code>if (loginResult == 0)</code>或者直接去掉这个判断直接交给外界处理，这个错误怎么说呢… 完全就不想你看到登录成功呀！！！</p>
+<p>另外，给<code>result</code>字典添加键值<code>@&quot;code&quot;:@(loginResult)</code>，如下</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result = @&#123;@<span class="string">"serverTime"</span><span class="symbol">:</span>@(serverTime),</span><br><span class="line">           @<span class="string">"result"</span><span class="symbol">:resultString</span>,</span><br><span class="line">           @<span class="string">"user"</span><span class="symbol">:user</span>,</span><br><span class="line">           @<span class="string">"code"</span><span class="symbol">:</span>@(loginResult)</span><br><span class="line">           &#125;;</span><br></pre></td></tr></table></figure>
+<p>后面明明用到了<code>code</code>，你却不传给我…</p>
+<p>处理到这里，基本可以登录上了。如果不行，看看服务端配的是否正确。另外，登录账号输入框提示写的内网花名，实际却是真名…</p>
+<p>另外，你需要将<code>bubble.bundle</code>添加到项目中，否则文本和语音会崩。这个文件在<code>Resource/Bundle</code>目录下面，拖到项目中即可。</p>
+<p>开启日志打印：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define NEED_OUTPUT_LOG             1</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>看完文章，想必大家也看到了很多的问题。不过代码还是值得研究的，熟悉了底层通讯、PB的使用、如何在客户端增加接口等，你就可以开始彻底的改造源码了。</p>
+<hr>
+<p>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/05/18/Teamtalk1/"></div>
+
+    <script type="text/javascript">
+var duoshuoQuery = {short_name:"jixuqiangxing"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?666255a9040b21ae6e21de0df572e119";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
