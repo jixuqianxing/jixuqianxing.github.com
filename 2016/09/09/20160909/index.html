@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      如何优雅地拦截按钮事件 | jixuqianxing 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="继续前行">
+    
+    
+
+    <meta name="description" content="关于这个标题，起因是这样的。
+最近一次做项目需求时，遇到这样一个需求，就是本来我们App是必须注册或者第三方登录才可以使用，现在希望不登录也可以浏览App里面的内容，只是在需要的时候才提示登录，并且在用户没有登录的情况下，用户选择并登录成功了，程序需自动完成用户操作登录前的操作。比如购买商品时没有登录，用户登录成功后，直接跳转至订单确认页面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何优雅地拦截按钮事件 | jixuqianxing">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/20160909/index.html">
+<meta property="og:site_name" content="jixuqianxing">
+<meta property="og:description" content="关于这个标题，起因是这样的。
+最近一次做项目需求时，遇到这样一个需求，就是本来我们App是必须注册或者第三方登录才可以使用，现在希望不登录也可以浏览App里面的内容，只是在需要的时候才提示登录，并且在用户没有登录的情况下，用户选择并登录成功了，程序需自动完成用户操作登录前的操作。比如购买商品时没有登录，用户登录成功后，直接跳转至订单确认页面。">
+<meta property="og:updated_time" content="2016-09-10T03:04:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何优雅地拦截按钮事件 | jixuqianxing">
+<meta name="twitter:description" content="关于这个标题，起因是这样的。
+最近一次做项目需求时，遇到这样一个需求，就是本来我们App是必须注册或者第三方登录才可以使用，现在希望不登录也可以浏览App里面的内容，只是在需要的时候才提示登录，并且在用户没有登录的情况下，用户选择并登录成功了，程序需自动完成用户操作登录前的操作。比如购买商品时没有登录，用户登录成功后，直接跳转至订单确认页面。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">jixuqianxing</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/jixuqianxing" title="jixuqianxing on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+  
+    <!--
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      -->
+
+      <li class="navigation__item">
+        <a href="http://weibo.com/u/2410259360" title="jixuqianxing on Weibo">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">如何优雅地拦截按钮事件</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-09-09" class="post-meta__date date">2016-09-09</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/iOS/">iOS</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>关于这个标题，起因是这样的。</p>
+<p>最近一次做项目需求时，遇到这样一个需求，就是本来我们<code>App</code>是必须注册或者第三方登录才可以使用，现在希望不登录也可以浏览<code>App</code>里面的内容，只是在需要的时候才提示登录，并且在用户没有登录的情况下，用户选择并登录成功了，程序需自动完成用户操作登录前的操作。比如购买商品时没有登录，用户登录成功后，直接跳转至订单确认页面。</p>
+<a id="more"></a>
+<p>在接到这个需求时，我们的<code>App</code>功能已经很多了，评估了下这个需求，发现<code>App</code>里面很多功能是需要登录才可以操作，比如关注用户、购买商品、私信聊天、评论等等，而且这些功能的入口也比较多。</p>
+<p>这么多的地方我们都要去写判断的代码显然是不科学的，那么有没有简单点的方式呢？怎么避免我们去做苦力活呢？🤔🤔🤔</p>
+<p>于是，进一步分析，发现这些功能大部分都是用户主动通过点击按钮来触发下一步操作。此时，我们把关注点移到按钮<code>UIButton</code>上。</p>
+<p>最开始想到的办法是自定义一个<code>button</code>，让所有需要登录操作的按钮继承这个按钮，然后，在这个按钮里面拦截自身事件进一步处理。但是，发现这么做还是需要改大量的代码。接着想到用类别来做，这样直接给按钮增加一个<code>BOOL</code>属性，设置为<code>YES</code>的按钮视为需要做登录才可以操作的按钮。然后，对于需要登录操作的按钮，在分类里面拦截其点击事件，并记录<code>target</code>和<code>action</code>，然后先判断是否登录：如果没有登录则丢弃其<code>target</code>和<code>action</code>，并且提示用户登录；如果用户已经登录或者登录成功了，则继续让<code>target</code>执行<code>action</code>，这样完美解决我们的需求，也只需要很少的代码即可搞定。<br>这个方案看似很不错，不过在实际做的时候还是走了弯路。一开始，我们想从下面方法入手</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)<span class="symbol">addTarget:</span>(nullableid)target <span class="symbol">action:</span>(SEL)action <span class="symbol">forControlEvents:</span>(UIControlEvents)controlEvents</span><br></pre></td></tr></table></figure>
+<p>但是发现根本就不能实现。经过查找，找到了下面这个方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)<span class="symbol">sendAction:</span>(SEL)action <span class="symbol">to:</span>(id)target <span class="symbol">forEvent:</span>(UIEvent *)event</span><br></pre></td></tr></table></figure>
+<p>关于这个方法，苹果给了如下解释：</p>
+<blockquote>
+<p>send the action. the first method is called for the event and is a point at which you can observe or override behavior. it is called repeately by the second.</p>
+</blockquote>
+<p>这正是我们要找的方法，于是我们重写此方法，如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">- (void)<span class="symbol">sendAction:</span>(SEL)action <span class="symbol">to:</span>(id)target <span class="symbol">forEvent:</span>(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.checkLogin)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">self</span>.selector = NSStringFromSelector(action);</span><br><span class="line">        <span class="keyword">self</span>.objClass = target;</span><br><span class="line">        [<span class="keyword">self</span> checkIsLogin];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="keyword">super</span> <span class="symbol">sendAction:</span>action <span class="symbol">to:</span>target <span class="symbol">forEvent:</span>event];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (void)checkIsLogin</span><br><span class="line">&#123;</span><br><span class="line">    __weak typeof(<span class="keyword">self</span>) weakSelf = <span class="keyword">self</span>;</span><br><span class="line">    [LoginManager <span class="symbol">checkLoginSuccess:</span>^&#123;</span><br><span class="line">        SEL sel = NSSelectorFromString(weakSelf.selector);</span><br><span class="line">        <span class="keyword">if</span> ([weakSelf.objClass <span class="symbol">respondsToSelector:</span>sel])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ([weakSelf.selector <span class="symbol">hasSuffix:</span>@<span class="string">":"</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                objc_msgSend(weakSelf.objClass, sel, <span class="keyword">self</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                objc_msgSend(weakSelf.objClass, sel);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>简单解释下这段代码：</strong><br>当按钮事件执行时会走<code>sendAction:to:forEvent:</code>这个方法，于是，我们在这个方法里面，先判断该按钮是否需要登录后再操作，如果需要，阻断事件传递，并记录下按钮的action和target，然后判断是否登录了，如果已经登录或者用户登录成功了，那么再调用<code>objc_msgSend(self.objClass, self.selector)</code>去实现按钮事件，如果用户放弃登录或者登录失败，则不做处理。</p>
+<p>实现了上面的方法之后，我们只需要找出那些按钮事件需要登录后才能操作，然后，设置按钮的<code>checkLogin = YES</code>即可，这样是不是省了很多不必要的代码。</p>
+<p>到此，上面的实现已经解决了所有按钮点击需要判断登录的操作。还有些是上述方式解决不了的，则使用<code>LoginManager</code>单独处理下，幸运的是，几乎很少地方需要单独处理😄。</p>
+<p>通过这个案例：一方面巩固了对<code>sendAction:to:forEvent:</code>这个方法的理解；另一方面在做需求的时候一定要发散思维，找到更合理的解决方法。</p>
+<p>欢迎大家留言讨论，如果你有更好地方式，欢迎分享！</p>
+<hr>
+<p>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/09/09/20160909/"></div>
+
+    <script type="text/javascript">
+var duoshuoQuery = {short_name:"jixuqiangxing"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?666255a9040b21ae6e21de0df572e119";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
